@@ -35,6 +35,13 @@ bool create_matrix (Matrix_t** new_matrix, const char* name, const unsigned int 
 
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
+        if(new_matrix == NULL || name == NULL || rows < 0 || cols < 0)
+        {
+             printf("Error Creating The Matrix"); 
+             return false;
+
+        } 
+
 	*new_matrix = calloc(1,sizeof(Matrix_t));
 	if (!(*new_matrix)) {
 		return false;
@@ -56,6 +63,11 @@ bool create_matrix (Matrix_t** new_matrix, const char* name, const unsigned int 
 
 	//TODO FUNCTION COMMENT
 
+
+/*  PURPOSE: Free the memory from the matrix
+    INPUT: The Matrix 
+    OUTPUT: VOID
+*/
 void destroy_matrix (Matrix_t** m) {
 
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -68,6 +80,13 @@ void destroy_matrix (Matrix_t** m) {
 
 	
 	//TODO FUNCTION COMMENT
+/*  PURPOSE: Checking to see if the values from these two matricies are equal
+    INPUT: Matrix A and Matrix B
+    OUTPUT: Bool True or False
+
+*/ 
+
+
 bool equal_matrices (Matrix_t* a, Matrix_t* b) {
 
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -84,6 +103,12 @@ bool equal_matrices (Matrix_t* a, Matrix_t* b) {
 }
 
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: Making a copy of the matricies
+   INPUT: Source Matrix and Destination Matrix
+   OUTPUT: Source Matrix and Destination Matrix.
+*/ 
+
 bool duplicate_matrix (Matrix_t* src, Matrix_t* dest) {
 
 
@@ -100,7 +125,12 @@ bool duplicate_matrix (Matrix_t* src, Matrix_t* dest) {
 	return equal_matrices (src,dest);
 }
 
-	//TODO FUNCTION COMMENT
+       
+        //TODO FUNCTION COMMENT
+/* PURPOSE: This function shifts the data in the matrix to the right or left depending on the integer
+   INPUT: The matrix, direction, and the shift integer
+*/ 
+
 bool bitwise_shift_matrix (Matrix_t* a, char direction, unsigned int shift) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -132,9 +162,20 @@ bool bitwise_shift_matrix (Matrix_t* a, char direction, unsigned int shift) {
 }
 
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: Matrix A and Matrix B are added together and their sum is put in Matrix C
+   INPUT: Matrix A , Matrix B , Matrix C
+   OUTPUT: True or false depending on if they can be added together 
+*/  
+
+
 bool add_matrices (Matrix_t* a, Matrix_t* b, Matrix_t* c) {
 
-	//TODO ERROR CHECK INCOMING PARAMETERS
+       //TODO ERROR CHECK INCOMING PARAMETERS
+        if(!a || !b || !a->data || !b->data)
+        {
+                return false; 
+        } 
 
 	if (a->rows != b->rows && a->cols != b->cols) {
 		return false;
@@ -149,10 +190,22 @@ bool add_matrices (Matrix_t* a, Matrix_t* b, Matrix_t* c) {
 }
 
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: Prints out the matrix given
+   INPUT: The Matrix 
+   OUTPUT: VOID
+*/ 
+
+
 void display_matrix (Matrix_t* m) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
+        
 
+      //if(m == null)
+     //{
+     //   return false;
+     //} 
 
 	printf("\nMatrix Contents (%s):\n", m->name);
 	printf("DIM = (%u,%u)\n", m->rows, m->cols);
@@ -167,9 +220,25 @@ void display_matrix (Matrix_t* m) {
 }
 
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: reads input located in the file and puts it in the matrix
+   INPUT: Filename and the point of the matrix its in.
+   OUTPUT: True if it was successfully read, false if it didnt work
+
+*/ 
+
+
 bool read_matrix (const char* matrix_input_filename, Matrix_t** m) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
+
+        if(!matrix_input_filename || !m)
+        {
+              return false;
+        }
+
+
+
 
 
 	int fd = open(matrix_input_filename,O_RDONLY);
@@ -300,6 +369,14 @@ bool read_matrix (const char* matrix_input_filename, Matrix_t** m) {
 }
 
 	//TODO FUNCTION COMMENT
+
+
+/*PURPOSE: Writing the Matrix into the file
+*INPUT: The file location and the matrix
+*OUTPUT: TRUE if it was successfull in writing, FALSE if unsuccessful
+*/
+ 
+
 bool write_matrix (const char* matrix_output_filename, Matrix_t* m) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -368,6 +445,14 @@ bool write_matrix (const char* matrix_output_filename, Matrix_t* m) {
 }
 
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: Creating a matrix filled with random numbers within the given range
+   INPUT: The Matrix, The starting Range, and the End of the range
+   OUTPUT: True if it was successful making the matrix, false if it failed
+
+*/
+
+
 bool random_matrix(Matrix_t* m, unsigned int start_range, unsigned int end_range) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -383,6 +468,13 @@ bool random_matrix(Matrix_t* m, unsigned int start_range, unsigned int end_range
 /*Protected Functions in C*/
 
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: Loading the data into the matrix
+   INPUT: The Matrix, the data
+   OUTPUT:VOID
+*/
+
+ 
 void load_matrix (Matrix_t* m, unsigned int* data) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
@@ -390,6 +482,12 @@ void load_matrix (Matrix_t* m, unsigned int* data) {
 }
 
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: adding the matrix to an array
+   INPUT: The matrix, the mats, and the counter variable
+   OUTPUT: The position
+*/ 
+
 unsigned int add_matrix_to_array (Matrix_t** mats, Matrix_t* new_matrix, unsigned int num_mats) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS

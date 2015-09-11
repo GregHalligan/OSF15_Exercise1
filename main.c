@@ -18,7 +18,14 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats,
 // TODO complete the defintion of this function. 
 void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats);
 
+
 	//TODO FUNCTION COMMENT
+
+/* PURPOSE: This program holds all of the functions in this program
+   INPUT: file name
+   OUTPUT: Matricies
+*/ 
+
 int main (int argc, char **argv) {
 	srand(time(NULL));		
 	char *line = NULL;
@@ -61,6 +68,11 @@ int main (int argc, char **argv) {
 }
 
 	//TODO FUNCTION COMMENT
+/*PURPOSE: Getting the program to run the commands
+ *INPUT: The command and the matricies, and the number of matricies
+*OUTPUT: VOID
+*/
+
 void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
@@ -196,6 +208,11 @@ void run_commands (Commands_t* cmd, Matrix_t** mats, unsigned int num_mats) {
 }
 
 	//TODO FUNCTION COMMENT
+/* PURPOSE: Finding the given name to the matrix
+   INPUT: The mats, number of mats, and the target
+   OUTPIT: The name of the matrix
+*/ 
+
 unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, const char* target) {
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
@@ -208,9 +225,23 @@ unsigned int find_matrix_given_name (Matrix_t** mats, unsigned int num_mats, con
 }
 
 	//TODO FUNCTION COMMENT
+/*PURPOSE: Destroying the heap and freeing the memory
+  INPUT: The heap
+  OUTPUT: VOID
+*/ 
+
 void destroy_remaining_heap_allocations(Matrix_t **mats, unsigned int num_mats) {
 	
 	//TODO ERROR CHECK INCOMING PARAMETERS
 
+
 	// COMPLETE MISSING MEMORY CLEARING HERE
+
+      //int i = 0;
+     //while()
+     //{
+     //   free();
+     //  i++; 
+
+
 }
